@@ -108,6 +108,8 @@ namespace Gui
             metroTileLimpar.Enabled = false;
             metroTileExcluir.Enabled = false;
             AlteraEstadoControles(false);
+
+            metroTabControl.SelectTab(0);
         }
 
         private void MetroTileLimpar_Click(object sender, EventArgs e)

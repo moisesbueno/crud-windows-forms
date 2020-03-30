@@ -321,7 +321,7 @@ namespace Gui
             this.txtHora.MaxLength = 32767;
             this.txtHora.Name = "txtHora";
             this.txtHora.PasswordChar = '\0';
-            this.txtHora.PromptText = "hh:mm:ss";
+            this.txtHora.WaterMark = "hh:mm:ss";
             this.txtHora.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txtHora.SelectedText = "";
             this.txtHora.SelectionLength = 0;
@@ -812,7 +812,7 @@ namespace Gui
         private MetroFramework.Controls.MetroGrid metroGrid1;
         private MetroFramework.Controls.MetroTile metroTileBuscar;
         private MetroFramework.Controls.MetroTextBox txtBusca;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataDataGridViewTextBoxColumn;
+        //private System.Windows.Forms.DataGridViewTextBoxColumn dataDataGridViewTextBoxColumn;
         private MetroFramework.Controls.MetroTextBox txtId;
         private MetroFramework.Controls.MetroLabel metroLabel1;
         private MetroFramework.Controls.MetroLabel metroLabel3;
