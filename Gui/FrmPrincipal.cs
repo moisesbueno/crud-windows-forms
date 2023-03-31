@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Text;
 using System.Windows.Forms;
-using Business;
 using MetroFramework;
 using MetroFramework.Forms;
 using MetroFramework.Controls;
-using Model;
-using System.Threading.Tasks;
 
 namespace Gui
 {

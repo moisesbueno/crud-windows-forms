@@ -1,7 +1,5 @@
-﻿using System;
-namespace Model
+﻿namespace Financeiro.Model
 {
-
     public class Lancamento
     {
         public long Id { get; set; }

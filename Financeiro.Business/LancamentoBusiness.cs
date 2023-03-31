@@ -1,16 +1,14 @@
 ﻿using Dapper;
-using DataAccess;
-using Model;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+using Financeiro.Data;
+using Financeiro.Model;
 
-namespace Business
+namespace Financeiro.Business
 {
-    public static class LancamentoBusiness
+    public class LancamentoBusiness
     {
-        public static async Task InsertAsync(Lancamento lancamento)
+        public async Task InsertAsync(Lancamento lancamento)
         {
-            using (var connection = await new Data().OpenConnectionAsync())
+            using (var connection = await new DataSqlite().OpenConnectionAsync())
             {
                 var sql = @"INSERT INTO tb_lancamentos(Id,Data,Hora,Terminal,Controle,ContaCreditada,Nome,Valor,NumeroEnvelope,NumeroControle)
                           VALUES (@Id,@Data,@Hora,@Terminal,@Controle,@ContaCreditada,@Nome,@Valor,@NumeroEnvelope,@NumeroControle);";
@@ -20,17 +18,10 @@ namespace Business
 
         }
 
-        public static async Task RemoveAsync(int id)
-        {
-            using (var connection = await new Data().OpenConnectionAsync())
-            {
-                var result = await connection.ExecuteAsync("DELETE FROM tb_lancamentos WHERE Id = @Id", new { id });
-            }
-        }
-        public static async Task UpdateAsync(Lancamento lancamento)
+        public async Task UpdateAsync(Lancamento lancamento)
         {
 
-            using (var connection = await new Data().OpenConnectionAsync())
+            using (var connection = await new DataSqlite().OpenConnectionAsync())
             {
 
                 var sql = @"UPDATE tb_lancamentos SET Data=@Data,Hora=@Hora,Terminal=@Terminal,Controle=@Controle,ContaCreditada=@ContaCreditada,Nome=@Nome,Valor=@Valor,NumeroEnvelope=@NumeroEnvelope,NumeroControle=@NumeroControle
@@ -41,17 +32,26 @@ namespace Business
             }
 
         }
-        public static async Task<IEnumerable<Lancamento>> ListAsync()
+
+        public async Task RemoveAsync(int id)
         {
-            using (var connection = await new Data().OpenConnectionAsync())
+            using (var connection = await new DataSqlite().OpenConnectionAsync())
+            {
+                var result = await connection.ExecuteAsync("DELETE FROM tb_lancamentos WHERE Id = @Id", new { id });
+            }
+        }
+        
+        public async Task<IEnumerable<Lancamento>> ListAsync()
+        {
+            using (var connection = await new DataSqlite().OpenConnectionAsync())
             {
                 return await connection.QueryAsync<Lancamento>("SELECT * FROM tb_lancamentos");
             }
         }
 
-        public static async Task<Lancamento> GetAsync(int id)
+        public async Task<Lancamento> GetAsync(int id)
         {
-            using (var connection = await new Data().OpenConnectionAsync())
+            using (var connection = await new DataSqlite().OpenConnectionAsync())
             {
                 var result = await connection.QueryFirstOrDefaultAsync<Lancamento>("SELECT * FROM  tb_lancamentos WHERE Id = @Id", new { id });
 
@@ -59,9 +59,9 @@ namespace Business
             }
         }
 
-        public async static Task<int> NextIdAsync()
+        public async Task<int> NextIdAsync()
         {
-            using (var connection = await new Data().OpenConnectionAsync())
+            using (var connection = await new DataSqlite().OpenConnectionAsync())
             {
                 var result = await connection.ExecuteScalarAsync<int>("SELECT max(id) from tb_lancamentos");
 
