@@ -1,51 +1,74 @@
-﻿using DataAccess;
+﻿using Dapper;
+using DataAccess;
 using Model;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Business
 {
     public static class LancamentoBusiness
     {
-        public static void Inserir(Lancamento lancamento)
+        public static async Task InsertAsync(Lancamento lancamento)
         {
-            Crud<Lancamento>.Insert(lancamento);
-        }
-
-        public static void Apagar(int id)
-        {
-            Crud<Lancamento>.Delete(id);
-        }
-        public static void Atualizar(Lancamento lancamento)
-        {
-            Crud<Lancamento>.Update(lancamento);
-        }
-        public static List<Lancamento> GetLancamentos()
-        {
-           // var temp = Crud<Lancamento>.Select().OrderBy(c => c.Data).ToList();
-
-            return Crud<Lancamento>.Select().OrderBy(c => c.Data).ToList();
-        }
-
-        public static Lancamento GetLancamento(int id)
-        {
-            var obj = Crud<Lancamento>.Select(id);
-            if (obj.Count > 0)
+            using (var connection = await new Data().OpenConnectionAsync())
             {
-                return obj.First();
+                var sql = @"INSERT INTO tb_lancamentos(Id,Data,Hora,Terminal,Controle,ContaCreditada,Nome,Valor,NumeroEnvelope,NumeroControle)
+                          VALUES (@Id,@Data,@Hora,@Terminal,@Controle,@ContaCreditada,@Nome,@Valor,@NumeroEnvelope,@NumeroControle);";
+
+                var result = await connection.ExecuteAsync(sql, lancamento);
             }
-            else
+
+        }
+
+        public static async Task RemoveAsync(int id)
+        {
+            using (var connection = await new Data().OpenConnectionAsync())
             {
-                return null;
+                var result = await connection.ExecuteAsync("DELETE FROM tb_lancamentos WHERE Id = @Id", new { id });
             }
         }
-
-        public static string GetNextId()
+        public static async Task UpdateAsync(Lancamento lancamento)
         {
-            return Crud<Lancamento>.GetNextId().ToString();
+
+            using (var connection = await new Data().OpenConnectionAsync())
+            {
+
+                var sql = @"UPDATE tb_lancamentos SET Data=@Data,Hora=@Hora,Terminal=@Terminal,Controle=@Controle,ContaCreditada=@ContaCreditada,Nome=@Nome,Valor=@Valor,NumeroEnvelope=@NumeroEnvelope,NumeroControle=@NumeroControle
+                            WHERE Id=@Id";
+
+
+                var result = await connection.ExecuteAsync(sql, lancamento);
+            }
+
+        }
+        public static async Task<IEnumerable<Lancamento>> ListAsync()
+        {
+            using (var connection = await new Data().OpenConnectionAsync())
+            {
+                return await connection.QueryAsync<Lancamento>("SELECT * FROM tb_lancamentos");
+            }
+        }
+
+        public static async Task<Lancamento> GetAsync(int id)
+        {
+            using (var connection = await new Data().OpenConnectionAsync())
+            {
+                var result = await connection.QueryFirstOrDefaultAsync<Lancamento>("SELECT * FROM  tb_lancamentos WHERE Id = @Id", new { id });
+
+                return result;
+            }
+        }
+
+        public async static Task<int> NextIdAsync()
+        {
+            using (var connection = await new Data().OpenConnectionAsync())
+            {
+                var result = await connection.ExecuteScalarAsync<int>("SELECT max(id) from tb_lancamentos");
+
+                if (result == 0) result = 1;
+                return result;
+            }
+
         }
     }
 }

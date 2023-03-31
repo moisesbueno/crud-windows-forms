@@ -6,6 +6,7 @@ using MetroFramework;
 using MetroFramework.Forms;
 using MetroFramework.Controls;
 using Model;
+using System.Threading.Tasks;
 
 namespace Gui
 {
@@ -30,13 +31,13 @@ namespace Gui
             AtualizarDados();
         }
 
-        private void MetroTileBuscar_Click(object sender, EventArgs e)
+        private async void MetroTileBuscar_Click(object sender, EventArgs e)
         {
             try
             {
                 var id = Convert.ToInt32(txtBusca.Text);
                 LimparControles();
-                Lancamento lancamento = LancamentoBusiness.GetLancamento(id);
+                Lancamento lancamento = await LancamentoBusiness.GetAsync(id);
 
                 if (lancamento != null)
                 {
@@ -64,32 +65,33 @@ namespace Gui
                     metroTileExcluir.Enabled = false;
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                MetroMessageBox.Show(this, "Erro ao buscar informações \n" +ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error, 150);
+                MetroMessageBox.Show(this, "Erro ao buscar informações \n" + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error, 150);
                 metroTileSalvar.Enabled = false;
                 metroTileLimpar.Enabled = false;
                 metroTileExcluir.Enabled = false;
             }
-           
+
         }
 
-        private void MetroTileNovo_Click(object sender, EventArgs e)
+        private async void MetroTileNovo_Click(object sender, EventArgs e)
         {
+            var x = await LancamentoBusiness.NextIdAsync();
             edicao = false;
-            txtId.Text = LancamentoBusiness.GetNextId();
+            txtId.Text = x.ToString();
             metroTileSalvar.Enabled = true;
             metroTileLimpar.Enabled = true;
             AlteraEstadoControles(true);
         }
 
-        private void MetroTileExcluir_Click(object sender, EventArgs e)
+        private async void MetroTileExcluir_Click(object sender, EventArgs e)
         {
             var result = MetroMessageBox.Show(this, "Deseja excluir este lançamento", "Exclusão", MessageBoxButtons.YesNo, MessageBoxIcon.Question, 150);
 
             if (result == DialogResult.Yes)
             {
-                LancamentoBusiness.Apagar(Convert.ToInt32(txtId.Text));
+                await LancamentoBusiness.RemoveAsync(Convert.ToInt32(txtId.Text));
                 LimparControles();
                 AlteraEstadoControles(false);
                 metroTileExcluir.Enabled = false;
@@ -118,8 +120,8 @@ namespace Gui
             metroTileExcluir.Enabled = false;
             metroTileSalvar.Enabled = false;
             metroTileLimpar.Enabled = false;
-        } 
-             
+        }
+
 
 
         private void LimparControles()
@@ -133,10 +135,10 @@ namespace Gui
 
         private void AtualizarDados()
         {
-            lancamentoBindingSource.DataSource = LancamentoBusiness.GetLancamentos();
+            lancamentoBindingSource.DataSource = LancamentoBusiness.ListAsync();
         }
 
-        private void MetroTile1_Click(object sender, EventArgs e)
+        private async void MetroTile1_Click(object sender, EventArgs e)
         {
             try
             {
@@ -157,12 +159,12 @@ namespace Gui
                 string mensagem = string.Empty;
                 if (edicao)
                 {
-                    LancamentoBusiness.Atualizar(lancamento);
+                    await LancamentoBusiness.UpdateAsync(lancamento);
                     mensagem = "alterado";
                 }
                 else
                 {
-                    LancamentoBusiness.Inserir(lancamento);
+                    await LancamentoBusiness.InsertAsync(lancamento);
                     mensagem = "incluido";
                 }
 

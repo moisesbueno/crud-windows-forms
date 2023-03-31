@@ -149,7 +149,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent>xCopy $(SolutionDir)Database\Financeiro.db $(TargetDir) /y
-xCopy $(SolutionDir)DataAccess\bin\$(PlatformName)\debug\$(PlatformName)\SQLite.Interop.dll $(TargetDir) /y</PreBuildEvent>
+    <PreBuildEvent>
+    </PreBuildEvent>
   </PropertyGroup>
 </Project>

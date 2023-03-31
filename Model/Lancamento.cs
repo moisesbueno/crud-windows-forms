@@ -1,13 +1,8 @@
-﻿using DataAccess;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 namespace Model
 {
-    [Table(Nome ="tb_lancamentos")]
-    public class Lancamento:IEntity
+
+    public class Lancamento
     {
         public long Id { get; set; }
         public DateTime Data { get; set; }
