@@ -40,7 +40,7 @@ namespace Financeiro.Business
                 var result = await connection.ExecuteAsync("DELETE FROM tb_lancamentos WHERE Id = @Id", new { id });
             }
         }
-        
+
         public async Task<IEnumerable<Lancamento>> ListAsync()
         {
             using (var connection = await new DataSqlite().OpenConnectionAsync())
@@ -53,7 +53,7 @@ namespace Financeiro.Business
         {
             using (var connection = await new DataSqlite().OpenConnectionAsync())
             {
-                var result = await connection.QueryFirstOrDefaultAsync<Lancamento>("SELECT * FROM  tb_lancamentos WHERE Id = @Id", new { id });
+                var result = await connection.QueryFirstOrDefaultAsync<Lancamento>("SELECT * FROM  tb_lancamentos WHERE Id = @Id", new { Id = id });
 
                 return result;
             }

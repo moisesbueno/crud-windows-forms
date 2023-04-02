@@ -28,96 +28,104 @@
         /// </summary>
         private void InitializeComponent()
         {
-            tabControl1 = new TabControl();
-            tabPage1 = new TabPage();
-            textBox11 = new TextBox();
+            tabPrincipal = new TabControl();
+            tabPagCadastro = new TabPage();
+            dateTimePicker = new DateTimePicker();
+            txtNumeroControle = new TextBox();
             label10 = new Label();
             label9 = new Label();
             label8 = new Label();
-            textBox10 = new TextBox();
-            textBox9 = new TextBox();
-            textBox8 = new TextBox();
-            textBox7 = new TextBox();
-            textBox6 = new TextBox();
-            textBox5 = new TextBox();
-            textBox4 = new TextBox();
-            textBox3 = new TextBox();
-            textBox2 = new TextBox();
+            txtNumeroEnvelope = new TextBox();
+            txtValor = new TextBox();
+            txtNome = new TextBox();
+            txtContaCreditada = new TextBox();
+            txtControle = new TextBox();
+            txtTerminal = new TextBox();
+            txtHora = new TextBox();
+            txtId = new TextBox();
             label7 = new Label();
             label6 = new Label();
             label5 = new Label();
             label4 = new Label();
             label3 = new Label();
             label2 = new Label();
-            textBox1 = new TextBox();
-            button5 = new Button();
-            button4 = new Button();
-            button3 = new Button();
-            button2 = new Button();
-            button1 = new Button();
+            txtBuscar = new TextBox();
+            btnBuscar = new Button();
+            btnExcluir = new Button();
+            btnLimpar = new Button();
+            btnSalvar = new Button();
+            btnNovo = new Button();
             label1 = new Label();
             tabPage2 = new TabPage();
-            tabControl1.SuspendLayout();
-            tabPage1.SuspendLayout();
+            tabPrincipal.SuspendLayout();
+            tabPagCadastro.SuspendLayout();
             SuspendLayout();
             // 
-            // tabControl1
+            // tabPrincipal
             // 
-            tabControl1.Controls.Add(tabPage1);
-            tabControl1.Controls.Add(tabPage2);
-            tabControl1.Location = new Point(12, 12);
-            tabControl1.Name = "tabControl1";
-            tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(794, 445);
-            tabControl1.TabIndex = 0;
+            tabPrincipal.Controls.Add(tabPagCadastro);
+            tabPrincipal.Controls.Add(tabPage2);
+            tabPrincipal.Location = new Point(12, 12);
+            tabPrincipal.Name = "tabPrincipal";
+            tabPrincipal.SelectedIndex = 0;
+            tabPrincipal.Size = new Size(794, 445);
+            tabPrincipal.TabIndex = 0;
             // 
-            // tabPage1
+            // tabPagCadastro
             // 
-            tabPage1.Controls.Add(textBox11);
-            tabPage1.Controls.Add(label10);
-            tabPage1.Controls.Add(label9);
-            tabPage1.Controls.Add(label8);
-            tabPage1.Controls.Add(textBox10);
-            tabPage1.Controls.Add(textBox9);
-            tabPage1.Controls.Add(textBox8);
-            tabPage1.Controls.Add(textBox7);
-            tabPage1.Controls.Add(textBox6);
-            tabPage1.Controls.Add(textBox5);
-            tabPage1.Controls.Add(textBox4);
-            tabPage1.Controls.Add(textBox3);
-            tabPage1.Controls.Add(textBox2);
-            tabPage1.Controls.Add(label7);
-            tabPage1.Controls.Add(label6);
-            tabPage1.Controls.Add(label5);
-            tabPage1.Controls.Add(label4);
-            tabPage1.Controls.Add(label3);
-            tabPage1.Controls.Add(label2);
-            tabPage1.Controls.Add(textBox1);
-            tabPage1.Controls.Add(button5);
-            tabPage1.Controls.Add(button4);
-            tabPage1.Controls.Add(button3);
-            tabPage1.Controls.Add(button2);
-            tabPage1.Controls.Add(button1);
-            tabPage1.Controls.Add(label1);
-            tabPage1.Location = new Point(4, 29);
-            tabPage1.Name = "tabPage1";
-            tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(786, 412);
-            tabPage1.TabIndex = 0;
-            tabPage1.Text = "tabPage1";
-            tabPage1.UseVisualStyleBackColor = true;
+            tabPagCadastro.Controls.Add(dateTimePicker);
+            tabPagCadastro.Controls.Add(txtNumeroControle);
+            tabPagCadastro.Controls.Add(label10);
+            tabPagCadastro.Controls.Add(label9);
+            tabPagCadastro.Controls.Add(label8);
+            tabPagCadastro.Controls.Add(txtNumeroEnvelope);
+            tabPagCadastro.Controls.Add(txtValor);
+            tabPagCadastro.Controls.Add(txtNome);
+            tabPagCadastro.Controls.Add(txtContaCreditada);
+            tabPagCadastro.Controls.Add(txtControle);
+            tabPagCadastro.Controls.Add(txtTerminal);
+            tabPagCadastro.Controls.Add(txtHora);
+            tabPagCadastro.Controls.Add(txtId);
+            tabPagCadastro.Controls.Add(label7);
+            tabPagCadastro.Controls.Add(label6);
+            tabPagCadastro.Controls.Add(label5);
+            tabPagCadastro.Controls.Add(label4);
+            tabPagCadastro.Controls.Add(label3);
+            tabPagCadastro.Controls.Add(label2);
+            tabPagCadastro.Controls.Add(txtBuscar);
+            tabPagCadastro.Controls.Add(btnBuscar);
+            tabPagCadastro.Controls.Add(btnExcluir);
+            tabPagCadastro.Controls.Add(btnLimpar);
+            tabPagCadastro.Controls.Add(btnSalvar);
+            tabPagCadastro.Controls.Add(btnNovo);
+            tabPagCadastro.Controls.Add(label1);
+            tabPagCadastro.Location = new Point(4, 29);
+            tabPagCadastro.Name = "tabPagCadastro";
+            tabPagCadastro.Padding = new Padding(3);
+            tabPagCadastro.Size = new Size(786, 412);
+            tabPagCadastro.TabIndex = 0;
+            tabPagCadastro.Text = "Cadastro";
+            tabPagCadastro.UseVisualStyleBackColor = true;
             // 
-            // textBox11
+            // dateTimePicker
             // 
-            textBox11.Location = new Point(99, 367);
-            textBox11.Name = "textBox11";
-            textBox11.Size = new Size(125, 27);
-            textBox11.TabIndex = 25;
+            dateTimePicker.CustomFormat = "MMMM dd, yyyy - dddd";
+            dateTimePicker.Location = new Point(106, 83);
+            dateTimePicker.Name = "dateTimePicker";
+            dateTimePicker.Size = new Size(124, 27);
+            dateTimePicker.TabIndex = 26;
+            // 
+            // txtNumeroControle
+            // 
+            txtNumeroControle.Location = new Point(106, 367);
+            txtNumeroControle.Name = "txtNumeroControle";
+            txtNumeroControle.Size = new Size(125, 27);
+            txtNumeroControle.TabIndex = 25;
             // 
             // label10
             // 
             label10.AutoSize = true;
-            label10.Location = new Point(3, 374);
+            label10.Location = new Point(6, 374);
             label10.Name = "label10";
             label10.Size = new Size(87, 20);
             label10.TabIndex = 24;
@@ -126,7 +134,7 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(2, 338);
+            label9.Location = new Point(5, 338);
             label9.Name = "label9";
             label9.Size = new Size(91, 20);
             label9.TabIndex = 23;
@@ -142,68 +150,62 @@
             label8.Text = "Valor";
             label8.Click += label8_Click;
             // 
-            // textBox10
+            // txtNumeroEnvelope
             // 
-            textBox10.Location = new Point(99, 331);
-            textBox10.Name = "textBox10";
-            textBox10.Size = new Size(125, 27);
-            textBox10.TabIndex = 21;
+            txtNumeroEnvelope.Location = new Point(106, 331);
+            txtNumeroEnvelope.Name = "txtNumeroEnvelope";
+            txtNumeroEnvelope.Size = new Size(125, 27);
+            txtNumeroEnvelope.TabIndex = 21;
             // 
-            // textBox9
+            // txtValor
             // 
-            textBox9.Location = new Point(99, 298);
-            textBox9.Name = "textBox9";
-            textBox9.Size = new Size(125, 27);
-            textBox9.TabIndex = 20;
+            txtValor.Location = new Point(106, 298);
+            txtValor.Name = "txtValor";
+            txtValor.Size = new Size(125, 27);
+            txtValor.TabIndex = 20;
             // 
-            // textBox8
+            // txtNome
             // 
-            textBox8.Location = new Point(99, 265);
-            textBox8.Name = "textBox8";
-            textBox8.Size = new Size(125, 27);
-            textBox8.TabIndex = 19;
+            txtNome.Location = new Point(106, 265);
+            txtNome.Name = "txtNome";
+            txtNome.Size = new Size(444, 27);
+            txtNome.TabIndex = 19;
             // 
-            // textBox7
+            // txtContaCreditada
             // 
-            textBox7.Location = new Point(99, 232);
-            textBox7.Name = "textBox7";
-            textBox7.Size = new Size(125, 27);
-            textBox7.TabIndex = 18;
+            txtContaCreditada.Location = new Point(106, 232);
+            txtContaCreditada.Name = "txtContaCreditada";
+            txtContaCreditada.Size = new Size(125, 27);
+            txtContaCreditada.TabIndex = 18;
             // 
-            // textBox6
+            // txtControle
             // 
-            textBox6.Location = new Point(99, 197);
-            textBox6.Name = "textBox6";
-            textBox6.Size = new Size(125, 27);
-            textBox6.TabIndex = 17;
+            txtControle.Location = new Point(106, 197);
+            txtControle.Name = "txtControle";
+            txtControle.Size = new Size(125, 27);
+            txtControle.TabIndex = 17;
             // 
-            // textBox5
+            // txtTerminal
             // 
-            textBox5.Location = new Point(99, 160);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(125, 27);
-            textBox5.TabIndex = 16;
+            txtTerminal.Location = new Point(106, 160);
+            txtTerminal.Name = "txtTerminal";
+            txtTerminal.Size = new Size(125, 27);
+            txtTerminal.TabIndex = 16;
             // 
-            // textBox4
+            // txtHora
             // 
-            textBox4.Location = new Point(99, 121);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(125, 27);
-            textBox4.TabIndex = 15;
+            txtHora.Location = new Point(106, 124);
+            txtHora.Name = "txtHora";
+            txtHora.Size = new Size(125, 27);
+            txtHora.TabIndex = 15;
             // 
-            // textBox3
+            // txtId
             // 
-            textBox3.Location = new Point(99, 80);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(125, 27);
-            textBox3.TabIndex = 14;
-            // 
-            // textBox2
-            // 
-            textBox2.Location = new Point(99, 44);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(125, 27);
-            textBox2.TabIndex = 13;
+            txtId.Enabled = false;
+            txtId.Location = new Point(106, 44);
+            txtId.Name = "txtId";
+            txtId.Size = new Size(125, 27);
+            txtId.TabIndex = 13;
             // 
             // label7
             // 
@@ -259,57 +261,62 @@
             label2.TabIndex = 7;
             label2.Text = "Data";
             // 
-            // textBox1
+            // txtBuscar
             // 
-            textBox1.Location = new Point(418, 8);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(125, 27);
-            textBox1.TabIndex = 6;
+            txtBuscar.Location = new Point(418, 8);
+            txtBuscar.Name = "txtBuscar";
+            txtBuscar.Size = new Size(125, 27);
+            txtBuscar.TabIndex = 6;
             // 
-            // button5
+            // btnBuscar
             // 
-            button5.Location = new Point(559, 8);
-            button5.Name = "button5";
-            button5.Size = new Size(94, 29);
-            button5.TabIndex = 5;
-            button5.Text = "Buscar";
-            button5.UseVisualStyleBackColor = true;
+            btnBuscar.Location = new Point(559, 8);
+            btnBuscar.Name = "btnBuscar";
+            btnBuscar.Size = new Size(94, 29);
+            btnBuscar.TabIndex = 5;
+            btnBuscar.Text = "Buscar";
+            btnBuscar.UseVisualStyleBackColor = true;
+            btnBuscar.Click += btnBuscar_Click;
             // 
-            // button4
+            // btnExcluir
             // 
-            button4.Location = new Point(306, 6);
-            button4.Name = "button4";
-            button4.Size = new Size(94, 29);
-            button4.TabIndex = 4;
-            button4.Text = "Excluir";
-            button4.UseVisualStyleBackColor = true;
+            btnExcluir.Location = new Point(306, 6);
+            btnExcluir.Name = "btnExcluir";
+            btnExcluir.Size = new Size(94, 29);
+            btnExcluir.TabIndex = 4;
+            btnExcluir.Text = "Excluir";
+            btnExcluir.UseVisualStyleBackColor = true;
+            btnExcluir.Click += btnExcluir_Click;
             // 
-            // button3
+            // btnLimpar
             // 
-            button3.Location = new Point(206, 6);
-            button3.Name = "button3";
-            button3.Size = new Size(94, 29);
-            button3.TabIndex = 3;
-            button3.Text = "Limpar";
-            button3.UseVisualStyleBackColor = true;
+            btnLimpar.Location = new Point(206, 6);
+            btnLimpar.Name = "btnLimpar";
+            btnLimpar.Size = new Size(94, 29);
+            btnLimpar.TabIndex = 3;
+            btnLimpar.Text = "Limpar";
+            btnLimpar.UseVisualStyleBackColor = true;
+            btnLimpar.Click += btnLimpar_Click;
             // 
-            // button2
+            // btnSalvar
             // 
-            button2.Location = new Point(106, 6);
-            button2.Name = "button2";
-            button2.Size = new Size(94, 29);
-            button2.TabIndex = 2;
-            button2.Text = "Salvar";
-            button2.UseVisualStyleBackColor = true;
+            btnSalvar.Location = new Point(106, 6);
+            btnSalvar.Name = "btnSalvar";
+            btnSalvar.Size = new Size(94, 29);
+            btnSalvar.TabIndex = 2;
+            btnSalvar.Text = "Salvar";
+            btnSalvar.UseVisualStyleBackColor = true;
+            btnSalvar.Click += btnSalvar_Click;
             // 
-            // button1
+            // btnNovo
             // 
-            button1.Location = new Point(6, 6);
-            button1.Name = "button1";
-            button1.Size = new Size(94, 29);
-            button1.TabIndex = 1;
-            button1.Text = "Novo";
-            button1.UseVisualStyleBackColor = true;
+            btnNovo.Location = new Point(6, 6);
+            btnNovo.Name = "btnNovo";
+            btnNovo.Size = new Size(94, 29);
+            btnNovo.TabIndex = 1;
+            btnNovo.Text = "Novo";
+            btnNovo.UseVisualStyleBackColor = true;
+            btnNovo.Click += btnNovo_Click;
             // 
             // label1
             // 
@@ -327,7 +334,7 @@
             tabPage2.Padding = new Padding(3);
             tabPage2.Size = new Size(786, 412);
             tabPage2.TabIndex = 1;
-            tabPage2.Text = "tabPage2";
+            tabPage2.Text = "Consulta";
             tabPage2.UseVisualStyleBackColor = true;
             // 
             // FrmPrincipal
@@ -335,28 +342,29 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(805, 462);
-            Controls.Add(tabControl1);
+            Controls.Add(tabPrincipal);
             MaximizeBox = false;
             Name = "FrmPrincipal";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FrmPrincipal";
-            tabControl1.ResumeLayout(false);
-            tabPage1.ResumeLayout(false);
-            tabPage1.PerformLayout();
+            Load += FrmPrincipal_Load;
+            tabPrincipal.ResumeLayout(false);
+            tabPagCadastro.ResumeLayout(false);
+            tabPagCadastro.PerformLayout();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private TabControl tabControl1;
-        private TabPage tabPage1;
+        private TabControl tabPrincipal;
+        private TabPage tabPagCadastro;
         private TabPage tabPage2;
-        private TextBox textBox1;
-        private Button button5;
-        private Button button4;
-        private Button button3;
-        private Button button2;
-        private Button button1;
+        private TextBox txtBuscar;
+        private Button btnBuscar;
+        private Button btnExcluir;
+        private Button btnLimpar;
+        private Button btnSalvar;
+        private Button btnNovo;
         private Label label1;
         private Label label7;
         private Label label6;
@@ -366,16 +374,16 @@
         private Label label2;
         private Label label9;
         private Label label8;
-        private TextBox textBox10;
-        private TextBox textBox9;
-        private TextBox textBox8;
-        private TextBox textBox7;
-        private TextBox textBox6;
-        private TextBox textBox5;
-        private TextBox textBox4;
-        private TextBox textBox3;
-        private TextBox textBox2;
-        private TextBox textBox11;
+        private TextBox txtNumeroEnvelope;
+        private TextBox txtValor;
+        private TextBox txtNome;
+        private TextBox txtContaCreditada;
+        private TextBox txtControle;
+        private TextBox txtTerminal;
+        private TextBox txtHora;
+        private TextBox txtId;
+        private TextBox txtNumeroControle;
         private Label label10;
+        private DateTimePicker dateTimePicker;
     }
 }
