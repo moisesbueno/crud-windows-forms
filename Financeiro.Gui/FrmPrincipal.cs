@@ -20,23 +20,20 @@ namespace Financeiro.Gui
             InitializeComponent();
         }
 
-        private void label8_Click(object sender, EventArgs e)
+
+
+        private void ChangeStateControls(bool state)
         {
 
-        }
-
-        private void AlteraEstadoControles(bool estado)
-        {
-
-            dateTimePicker.Enabled = estado;
-            txtHora.Enabled = estado;
-            txtTerminal.Enabled = estado;
-            txtControle.Enabled = estado;
-            txtContaCreditada.Enabled = estado;
-            txtNome.Enabled = estado;
-            txtValor.Enabled = estado;
-            txtNumeroControle.Enabled = estado;
-            txtNumeroEnvelope.Enabled = estado;
+            dateTimePicker.Enabled = state;
+            txtHora.Enabled = state;
+            txtTerminal.Enabled = state;
+            txtControle.Enabled = state;
+            txtContaCreditada.Enabled = state;
+            txtNome.Enabled = state;
+            txtValor.Enabled = state;
+            txtNumeroControle.Enabled = state;
+            txtNumeroEnvelope.Enabled = state;
         }
 
         private async void btnSalvar_Click(object sender, EventArgs e)
@@ -71,12 +68,13 @@ namespace Financeiro.Gui
 
                 LimparControles();
                 ChangeStateButtons(false);
+                ChangeStateControls(false);
 
-                MessageBox.Show($"Lançamento {mensagem} com sucesso !", "Lançamento", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(this, $"Lançamento {mensagem} com sucesso !", "Lançamento", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Não foi possivel gravar o lançamento \n" + ex.Message, "Lançamento", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                MessageBox.Show(this, "Não foi possivel gravar o lançamento \n" + ex.Message, "Lançamento", MessageBoxButtons.OK, MessageBoxIcon.Hand);
             }
         }
 
@@ -95,6 +93,7 @@ namespace Financeiro.Gui
         {
             LimparControles();
             ChangeStateButtons(false);
+            ChangeStateControls(false);
         }
 
         private void ChangeStateButtons(bool state)
@@ -108,14 +107,15 @@ namespace Financeiro.Gui
         {
             AtualizarDados();
             ChangeStateButtons(false);
-            AlteraEstadoControles(false);
+            ChangeStateControls(false);
 
             tabPrincipal.SelectTab(0);
         }
 
-        private void AtualizarDados()
+        private async void AtualizarDados()
         {
-            Console.WriteLine("Teste");
+            dataGridLancamentos.DataSource = await new LancamentoBusiness().ListAsync();
+            dataGridLancamentos.Refresh();
         }
 
         private async void btnExcluir_Click(object sender, EventArgs e)
@@ -126,7 +126,7 @@ namespace Financeiro.Gui
             {
                 await new LancamentoBusiness().RemoveAsync(Convert.ToInt32(txtId.Text));
                 LimparControles();
-                AlteraEstadoControles(false);
+                ChangeStateControls(false);
                 ChangeStateButtons(false);
 
 
@@ -141,7 +141,7 @@ namespace Financeiro.Gui
             txtId.Text = id.ToString();
             btnSalvar.Enabled = true;
             btnLimpar.Enabled = true;
-            AlteraEstadoControles(true);
+            ChangeStateControls(true);
         }
 
         private async void btnBuscar_Click(object sender, EventArgs e)
@@ -165,7 +165,7 @@ namespace Financeiro.Gui
                     txtValor.Text = lancamento?.Valor.ToString();
                     txtNumeroControle.Text = lancamento?.NumeroControle;
                     txtNumeroEnvelope.Text = lancamento?.NumeroEnvelope;
-                    AlteraEstadoControles(true);
+                    ChangeStateControls(true);
                     ChangeStateButtons(true);
 
                 }
@@ -173,7 +173,7 @@ namespace Financeiro.Gui
                 {
                     MessageBox.Show(this, "Nenhum lançamento encontrado", "Busca", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     ChangeStateButtons(false);
-                    AlteraEstadoControles(false);
+                    ChangeStateControls(false);
                     LimparControles();
                 }
             }
@@ -181,6 +181,16 @@ namespace Financeiro.Gui
             {
                 MessageBox.Show(this, "Erro ao buscar informações \n" + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 ChangeStateButtons(false);
+            }
+        }
+
+
+
+        private void tabPrincipal_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (((TabControl)sender).SelectedIndex == 1)
+            {
+                AtualizarDados();
             }
         }
     }

@@ -57,8 +57,11 @@
             btnNovo = new Button();
             label1 = new Label();
             tabPage2 = new TabPage();
+            dataGridLancamentos = new DataGridView();
             tabPrincipal.SuspendLayout();
             tabPagCadastro.SuspendLayout();
+            tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridLancamentos).BeginInit();
             SuspendLayout();
             // 
             // tabPrincipal
@@ -70,6 +73,8 @@
             tabPrincipal.SelectedIndex = 0;
             tabPrincipal.Size = new Size(794, 445);
             tabPrincipal.TabIndex = 0;
+            tabPrincipal.SelectedIndexChanged += tabPrincipal_SelectedIndexChanged;
+           
             // 
             // tabPagCadastro
             // 
@@ -109,7 +114,8 @@
             // 
             // dateTimePicker
             // 
-            dateTimePicker.CustomFormat = "MMMM dd, yyyy - dddd";
+            dateTimePicker.CustomFormat = "";
+            dateTimePicker.Format = DateTimePickerFormat.Short;
             dateTimePicker.Location = new Point(106, 83);
             dateTimePicker.Name = "dateTimePicker";
             dateTimePicker.Size = new Size(124, 27);
@@ -148,7 +154,6 @@
             label8.Size = new Size(43, 20);
             label8.TabIndex = 22;
             label8.Text = "Valor";
-            label8.Click += label8_Click;
             // 
             // txtNumeroEnvelope
             // 
@@ -196,6 +201,7 @@
             // 
             txtHora.Location = new Point(106, 124);
             txtHora.Name = "txtHora";
+            txtHora.PlaceholderText = "hh:mm:ss";
             txtHora.Size = new Size(125, 27);
             txtHora.TabIndex = 15;
             // 
@@ -329,6 +335,7 @@
             // 
             // tabPage2
             // 
+            tabPage2.Controls.Add(dataGridLancamentos);
             tabPage2.Location = new Point(4, 29);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
@@ -336,6 +343,22 @@
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Consulta";
             tabPage2.UseVisualStyleBackColor = true;
+           
+            // 
+            // dataGridLancamentos
+            // 
+            dataGridLancamentos.AllowUserToAddRows = false;
+            dataGridLancamentos.AllowUserToDeleteRows = false;
+            dataGridLancamentos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridLancamentos.Dock = DockStyle.Fill;
+            dataGridLancamentos.Location = new Point(3, 3);
+            dataGridLancamentos.Name = "dataGridLancamentos";
+            dataGridLancamentos.ReadOnly = true;
+            dataGridLancamentos.RowHeadersWidth = 51;
+            dataGridLancamentos.RowTemplate.Height = 29;
+            dataGridLancamentos.Size = new Size(780, 406);
+            dataGridLancamentos.TabIndex = 0;
+           
             // 
             // FrmPrincipal
             // 
@@ -351,6 +374,8 @@
             tabPrincipal.ResumeLayout(false);
             tabPagCadastro.ResumeLayout(false);
             tabPagCadastro.PerformLayout();
+            tabPage2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dataGridLancamentos).EndInit();
             ResumeLayout(false);
         }
 
@@ -385,5 +410,6 @@
         private TextBox txtNumeroControle;
         private Label label10;
         private DateTimePicker dateTimePicker;
+        private DataGridView dataGridLancamentos;
     }
 }
